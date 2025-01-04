@@ -40,6 +40,9 @@ I got a lot of fines compared to other studies. Please understand that this is t
 (The collection fine will be 1/n at the beginning of the month.)
  
 conditions of participation
+
 📌 Silver3 or higher Baekjun problem, Lv.2 or higher programmers who can solve it
+
 📌 Language Irrelevant (My main language is Python, and I'm planning on practicing with Java as well)
+
 📌 Those who will work hard with the mindset that they will not pay a single fine
