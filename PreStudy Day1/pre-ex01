@@ -1,0 +1,15 @@
+import math
+
+n = int(input())
+for i in range(n):
+    x1, y1, r1, x2, y2, r2 = map(int, input().split())
+    ds  = (x1 - x2)**2 + (y1 - y2)**2 
+    if (r1 + r2)**2 == ds or (r1 - r2)**2 == ds:
+        if ds == 0 and r1 == r2:
+            print(-1)
+        else:
+            print(1)
+    elif (r1 - r2)**2 > ds or (r1 + r2)**2  < ds:
+        print(0)
+    elif (r1 - r2)**2 < ds < (r1 + r2)**2 :
+        print(2)
