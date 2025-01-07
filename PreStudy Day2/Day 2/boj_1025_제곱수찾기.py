@@ -1,5 +1,4 @@
 import sys
-import pdb
 
 input = sys.stdin.readline
 n, m = map(int, input().split())
