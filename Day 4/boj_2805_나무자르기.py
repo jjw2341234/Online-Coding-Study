@@ -13,3 +13,5 @@ while s<=e:
     else:
         e = mid-1
 print(e)
+
+#다시 풀어 이진탐색 
