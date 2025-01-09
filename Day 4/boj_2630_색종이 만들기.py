@@ -22,4 +22,5 @@ def check_validity(x,y,n):
 check_validity(0,0,n)
 print(z_cnt)
 print(o_cnt)
+#이거는 다시 풀기
 
