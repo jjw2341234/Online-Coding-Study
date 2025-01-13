@@ -1,0 +1,20 @@
+from collections import deque
+n,m = map(int, input().split())
+arr = [list(map(int, input())) for _ in range(n)]
+visit = [[0] * m for _ in range(n)]
+def bfs():
+    q = deque()
+    q.append([0,0])
+    visit[0][0] = 1
+    while q:
+        x, y = q.popleft()
+        if x == n-1 and y == m-1:
+            print(visit[n-1][m-1])
+            return 
+        for dx, dy in ((-1,0), (1,0),(0, 1), (0, -1)):
+            nx = x + dx
+            ny = y + dy
+            if 0<= nx < n and 0<=ny<m and arr[nx][ny] and not visit[nx][ny]:
+                visit[nx][ny] = visit[x][y] + 1
+                q.append([nx, ny])
+bfs()
