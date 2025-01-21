@@ -1,19 +1,17 @@
 from collections import deque
-s,e = map(int, input().split())
-inf = int(1e6+1)
-visit = [0] * inf
 
-def bfs(s):
+def bfs(x):
     q = deque()
-    q.append(s)
+    q.append(x)
     while q:
         x = q.popleft()
         if x == e:
-            print(visit[e])
-            return
-        for i in (x-1, x+1, 2*x):
-            if 0<= i < inf and not visit[i]:
-                visit[i] = visit[x] + 1
-                q.append(i)
+            return visit[e]
+        for nx in [x-1, x+1, 2*x]:
+            if 0<=nx< 100001 and visit[nx] == 0:
+                visit[nx] = visit[x] + 1
+                q.append(nx)
 
-bfs(s)
+s,e = map(int, input().split())
+visit = [0] * (100001)
+print(bfs(s))
