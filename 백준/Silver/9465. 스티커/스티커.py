@@ -10,8 +10,8 @@ for _ in range(t):
     if n == 1:
         print(max(dp[0][0], dp[1][0]))
         continue
-    dp[0][1]= lista[1] + listb[0]
-    dp[1][1]= lista[0] + listb[1]
+    dp[0][1]= dp[1][0] + lista[1]
+    dp[1][1]= dp[0][0] + listb[1]
 
     if n == 2:
         print(max(dp[0][1], dp[1][1]))
