@@ -1,32 +1,35 @@
 from collections import deque
-n,m,s = map(int, input().split())
-graph = [[0] * (n+1) for i in range(n+1)]
-visit = [0] * (n+1)
-visit[s] = 1
-visit2 = [0] * (n+1)
-visit2[s] = 1
 
-for _ in range(m):
-    a,b = map(int, input().split())
-    graph[a][b] = 1
-    graph[b][a] = 1
-def dfs(s):
-    print(s, end = " ")
-    for i in range(1, n+1):
-        if graph[s][i] and not visit[i]:
-            visit[i] = 1
-            dfs(i)
-dfs(s)
-print()
 def bfs(s):
-    q = deque()
+    q =deque()
     q.append(s)
-    visit2[s] = 1
+    v[s] = 1
     while q:
         x = q.popleft()
         print(x, end = " ")
-        for i in range(1, n+1):
-            if graph[x][i] and not visit2[i]:
-                visit2[i] = 1
-                q.append(i)
+        for nxt in range(len(arr[x])):
+            if not v[nxt] and arr[x][nxt]:
+                v[nxt] = 1
+                q.append(nxt)
+
+def dfs(s):
+    stack = [s]
+    v[s] = 1
+    print(s, end = " ")
+    for i in range(len(arr[s])):
+        if not v[i] and arr[s][i] == 1:
+            dfs(i) 
+n,m,s = map(int, input().split())
+v = [0] * (n+1)
+arr  = [[0] * (n+1) for _ in range(n+1)]
+for _ in range(m):
+    x,y = map(int, input().split())
+    arr[x][y] = arr[y][x] = 1
+
+dfs(s)
+
+print()
+
+v = [0] * (n+1)
+
 bfs(s)
