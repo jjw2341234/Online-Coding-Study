@@ -1,9 +1,17 @@
-import math
 n = int(input())
-dp = [0,1]
-for i in range(2, n+1):
-    minv = 1e9
-    for j in range(1, int(i**0.5) + 1):
-        minv = min(minv, dp[i - j ** 2])
-    dp.append(minv + 1) 
+dp = [0] * (n+1)
+k = 1
+while k**2 <= n:
+    dp[k**2] = 1
+    k+=1
+for i in range(1, n+1):
+    if dp[i]:
+        continue
+    j = 1
+    while j*j <= i:
+        if dp[i] == 0:
+            dp[i] = dp[j*j] + dp[i - j*j]
+        else:
+            dp[i] = min(dp[i], dp[j*j] + dp[i - j*j])
+        j+=1
 print(dp[n])
