@@ -15,7 +15,7 @@ def card_shuffle(prev, i, k):
     return card_shuffle(next, i+1, k) + prev[:size-cnt]
 
 k1 = 1
-while 2**k1 < n:
+while 2 ** k1 < n:
     first = card_shuffle(arr, 1, k1)
     k2 = 1
     while 2 ** k2 < n:
@@ -23,5 +23,5 @@ while 2**k1 < n:
         if second == res:
             print(k1, k2)
             break
-        k2 += 1
-    k1 += 1
+        k2+=1
+    k1+=1
