@@ -9,7 +9,7 @@ def solution(n):
         return 2
     dp[3] = 3
     if n == 3:
-        return dp[n]
+        return 3
     else:
         for i in range(4,n+1):
             dp[i] = (dp[i-1]+ dp[i-2]) % 1234567
