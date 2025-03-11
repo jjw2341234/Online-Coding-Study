@@ -8,7 +8,7 @@ def pwd(x, res):
     if len(res) == n:
         rcnt = 0
         for r in res:
-            if "a" == r or "e" == r or "i" == r or "u" == r or "o" == r:
+            if r in "aeiou":
                 rcnt+=1
         if n-rcnt >= 2 and rcnt:
             if ''.join(res) not in res_list:
