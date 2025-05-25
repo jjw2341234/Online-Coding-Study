@@ -1,43 +1,29 @@
-from collections import deque
 import sys
-inpu = sys.stdin.readline
-
+from functools import cache
+input = sys.stdin.readline
 n = int(input())
-
 cakes = [int(input()) for _ in range(n)]
-
-def dfs(visit, turn, u1, u2): #일단 x를 선택함
-    cand = []
-
-    for i in range(n):
-        if visit[i]:continue
-        if visit[(i-1)%n] or visit[(i+1)%n]:
-            cand.append(i)
-        
-    if not cand:
-        return u1
-
-    if turn == 0:
-        u2_ind = max(cand, key= lambda x: cakes[x])
-        visit[u2_ind] = 1
-        res = dfs(visit, 1, u1, u2+cakes[u2_ind])
-        visit[u2_ind] = 0
-        return res     
+res = 0
+res2 = 0
+def ioi(l,r):
+    if l == r:
+        return -1,-1
+    if cakes[l] > cakes[r]:
+        return (l-1) % n, r
     else:
-        max_score = 0
-        for j in cand:
-            visit[j] = 1
-            max_score = max(max_score, dfs(visit, 0, u1 + cakes[j], u2))
-            visit[j] = 0
-        return max_score
-
+        return l % n, (r+1) %n
+@cache
+def cutting(l, r):
+    l,r = ioi(l,r)
+    if l == -1 and r == -1:
+        return 0
+    if l == r:
+        return cakes[l]
+    res = 0
+    res = max(res, cutting((l-1) %n, r) + cakes[l]) 
+    res = max(res, cutting(l, (r+1) % n) + cakes[r])
+    return res
 ans = 0
 for i in range(n):
-    visit = [0] * (n)
-    visit[i] = 1
-
-    ans = max(ans , dfs(visit, 0, cakes[i], 0))
+    ans = max(ans, cutting((i-1)%n, (i+1) % n) + cakes[i])
 print(ans)
-
-
-
