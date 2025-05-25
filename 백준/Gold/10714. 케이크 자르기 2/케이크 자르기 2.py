@@ -1,6 +1,7 @@
 import sys
 from functools import cache
 input = sys.stdin.readline
+sys.setrecursionlimit(10000)
 n = int(input())
 cakes = [int(input()) for _ in range(n)]
 res = 0
