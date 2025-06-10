@@ -5,4 +5,4 @@ dots.append(dots[0])
 res = 0
 for i in range(n):
     res += (dots[i][0] * dots[i+1][1] - dots[i][1] *  dots[i+1][0])
-print(abs(res)/2)
+print(round(abs(res) / 2, 2))
