@@ -1,13 +1,12 @@
-import sys
-input = sys.stdin.readline
 n = int(input())
 arr =list(map(int, input().split()))
-ind = []
 cnt = int(1e9)
 for i in range(n):
+    ind = []
     for j in range(i+1, n):
-        tmp = (arr[j] - arr[i])//(j-i)
-        ind.append(tmp)
+        if (arr[j] - arr[i]) % (j-i) == 0:
+            tmp = (arr[j] - arr[i])//(j-i)
+            ind.append(tmp)
     
     ind = list(set(ind))
     for k in ind:
